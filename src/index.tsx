@@ -1,3 +1,4 @@
+import Footer from 'Components/Footer';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Botao from './Components/Botao/Bota';
@@ -10,6 +11,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Cardapio />
-    <Botao></Botao>
+    {/* //componentes criados em exercício na aula, mas não utilizados */}
+    <Botao></Botao> 
+    <Footer/> 
   </React.StrictMode>
 );
