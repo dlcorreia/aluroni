@@ -1,8 +1,9 @@
 import Footer from 'Components/Footer';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Botao from './Components/Botao/Bota';
+import 'normalize.css'; //alternativa para o reset pelo css
 import './index.css';
+import Botao from './Components/Botao/Bota';
 import Cardapio from './pages/Cardapio';
 
 const root = ReactDOM.createRoot(
