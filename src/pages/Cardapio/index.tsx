@@ -2,6 +2,7 @@ import {ReactComponent as Logo} from "assets/logo.svg";
 import styles from "./Cardapio.module.scss";
 import Buscador from "./Buscador";
 import { useState } from "react";
+import Filtros from "./Filtros"
 
 
 export default function Cardapio() {
@@ -20,6 +21,7 @@ export default function Cardapio() {
                 busca={busca}
                 setBusca={setBusca}
             />
+            <Filtros />
         </main>
     )
 }
