@@ -3,10 +3,14 @@ import styles from "./Cardapio.module.scss";
 import Buscador from "./Buscador";
 import { useState } from "react";
 import Filtros from "./Filtros"
+import Ordenador from "./Ordenador";
 
 
 export default function Cardapio() {
     const [busca, setBusca] = useState("");
+    const [filtro, setFiltro] = useState<number | null>(null);
+    const [ordenador, setOrdenador] = useState("");
+
     return (
         <main>
             <nav className={styles.menu}>
@@ -17,11 +21,19 @@ export default function Cardapio() {
                     A casa do codigo e da massa
                 </div>
             </header>
-            <Buscador
-                busca={busca}
-                setBusca={setBusca}
-            />
-            <Filtros />
+            <section className={styles.cardapio}>
+                <h3 className={styles.cardapio__titulo}>
+                    Cardápio
+                </h3>
+                <Buscador
+                    busca={busca}
+                    setBusca={setBusca}
+                    />
+                <div className={styles.cardapio_filtros}>
+                    <Filtros filtro={filtro} setFiltro={setFiltro} />
+                    <Ordenador ordenador={ordenador} setOrdenador={setOrdenador}/>
+                </div>
+            </section>
         </main>
     )
 }
