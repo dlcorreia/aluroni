@@ -62,5 +62,14 @@
     justify-content: space-between;
     margin-bottom: 30px;
     width: 100%;
+    &__ordenadores {
+      align-items: center;
+
+    }
   }
+}
+
+.teste {
+  display: inline-block;
+  margin-left: 5px;
 }

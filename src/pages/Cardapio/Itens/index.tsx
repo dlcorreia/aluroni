@@ -6,12 +6,13 @@ import styles from "./Itens.module.scss";
 interface Props {
     busca: string,
     filtro: number | null,
-    ordenador: string
+    ordenador: string,
+    ordem: boolean
 }
 
 export default function Itens(props: Props) {
     const [lista, setLista] = useState(cardapio);
-    const {busca, filtro, ordenador} = props;
+    const {busca, filtro, ordenador, ordem} = props;
 
     function testaBusca(title: string) {
         const regex = new RegExp(busca, 'i');
@@ -25,6 +26,10 @@ export default function Itens(props: Props) {
 
     function ordenaPor(lista: typeof cardapio, criterio: 'size' | 'serving' | 'price') {
         return lista.sort((a,b) => a[criterio] > b[criterio] ? 1 : -1);
+    }
+
+    function reverter(lista: typeof cardapio, ordem: boolean) {
+        return ordem ? lista : lista.reverse();
     }
 
     function ordenar(lista: typeof cardapio) {
@@ -46,8 +51,8 @@ export default function Itens(props: Props) {
 
     useEffect(() => {
         const novaLista = criaLista();
-        setLista(ordenar(novaLista));
-      },[busca, filtro, ordenador])
+        setLista(reverter(ordenar(novaLista), ordem));
+      },[busca, filtro, ordenador, ordem])
 
 
     return (

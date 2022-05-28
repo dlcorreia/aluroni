@@ -5,12 +5,14 @@ import { useState } from "react";
 import Filtros from "./Filtros"
 import Ordenador from "./Ordenador";
 import Itens from "./Itens";
+import Crescente from "./Crescente";
 
 
 export default function Cardapio() {
     const [busca, setBusca] = useState("");
     const [filtro, setFiltro] = useState<number | null>(null);
     const [ordenador, setOrdenador] = useState("");
+    const [ordem, setOrdem] = useState(true);
 
     return (
         <main>
@@ -31,10 +33,19 @@ export default function Cardapio() {
                     setBusca={setBusca}
                     />
                 <div className={styles.cardapio__filtros}>
-                    <Filtros filtro={filtro} setFiltro={setFiltro} />
-                    <Ordenador ordenador={ordenador} setOrdenador={setOrdenador}/>
+                    <div>
+                        <Filtros filtro={filtro} setFiltro={setFiltro} />
+                    </div>
+                    <div className={styles.cardapio__filtros__ordenadores}>
+                        <div className={styles.teste}>
+                            <Ordenador ordenador={ordenador} setOrdenador={setOrdenador}/>
+                        </div>
+                        <div className={styles.teste}>
+                            <Crescente ordem={ordem} setOrdem={setOrdem} />
+                        </div>
+                    </div>
                 </div>
-                <Itens busca={busca} filtro={filtro} ordenador={ordenador}/>
+                <Itens busca={busca} filtro={filtro} ordenador={ordenador} ordem={ordem}/>
             </section>
         </main>
     )
