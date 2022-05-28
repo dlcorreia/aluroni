@@ -23,25 +23,31 @@ export default function Itens(props: Props) {
         return true;
     };
 
+    function ordenaPor(lista: typeof cardapio, criterio: 'size' | 'serving' | 'price') {
+        return lista.sort((a,b) => a[criterio] > b[criterio] ? 1 : -1);
+    }
+
     function ordenar(lista: typeof cardapio) {
         switch(ordenador) {
             case 'porcao':
-                return lista.sort((a,b) => a.size > b.size ? 1 : -1);
+                return ordenaPor(lista, 'size');
             case 'qtd_pessoas':
-                return lista.sort((a,b) => a.serving > b.serving ? 1 : -1);
+                return ordenaPor(lista, 'serving')
             case 'preco':
-                return lista.sort((a,b) => a.price > b.price ? 1 : -1);
+                return ordenaPor(lista, 'price');
             default:
                 return lista;
         }
     }
 
+    function criaLista() {
+        return cardapio.filter(item => testaBusca(item.title) && testaFiltro(item.category.id));
+   }
+
     useEffect(() => {
-        const novaLista = cardapio.filter(item => testaBusca(item.title) && testaFiltro(item.category.id))
-//       if (novaLista.length !== 0) setLista(novaLista);
-//        else setLista(cardapio);
+        const novaLista = criaLista();
         setLista(ordenar(novaLista));
-    }, [busca, filtro, ordenador]);
+      },[busca, filtro, ordenador])
 
 
     return (
