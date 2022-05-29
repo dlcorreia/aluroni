@@ -13,7 +13,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Cardapio />
+    <Inicio />
+    {/* <Cardapio /> */}
     {/* //componentes criados em exercício na aula, mas não utilizados */}
     {/* <ToDoList />
     <Botao></Botao> 
