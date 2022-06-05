@@ -1,4 +1,4 @@
-import {ReactComponent as Logo} from 'assets/logo.svg';
+
 import styles from './Cardapio.module.scss';
 import Buscador from './Buscador';
 import { useState } from 'react';
@@ -6,6 +6,7 @@ import Filtros from './Filtros';
 import Ordenador from './Ordenador';
 import Itens from './Itens';
 import Crescente from './Crescente';
+import Menu from 'Components/Menu';
 
 
 export default function Cardapio() {
@@ -16,9 +17,7 @@ export default function Cardapio() {
 
   return (
     <main>
-      <nav className={styles.menu}>
-        <Logo />
-      </nav>
+      <Menu />
       <header className={styles.header}>
         <div className={styles.header__text}>
                     A casa do codigo e da massa
